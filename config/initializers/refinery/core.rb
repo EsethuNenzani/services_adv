@@ -6,6 +6,8 @@ Refinery::Core.configure do |config|
   # When true this will force SSL redirection in all Refinery backend controllers.
   # config.force_ssl = false
 
+  config.s3_datastore = true
+
   # Dragonfly and S3 configurations have moved to initializers/refinery/dragonfly.rb
 
   # Whenever Refinery caches anything and can set a cache key, it will add
