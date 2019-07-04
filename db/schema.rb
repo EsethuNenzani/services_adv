@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190620081566) do
+ActiveRecord::Schema.define(version: 20190703123653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,27 @@ ActiveRecord::Schema.define(version: 20190620081566) do
     t.string "full_name"
     t.index ["id"], name: "index_refinery_authentication_devise_users_on_id"
     t.index ["slug"], name: "index_refinery_authentication_devise_users_on_slug"
+  end
+
+  create_table "refinery_banners", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.text "description"
+    t.integer "image_id"
+    t.string "url"
+    t.boolean "is_active"
+    t.date "start_date"
+    t.date "expiry_date"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "refinery_banners_pages", id: false, force: :cascade do |t|
+    t.integer "page_id"
+    t.integer "banner_id"
+    t.index ["banner_id"], name: "index_refinery_banners_pages_on_banner_id"
+    t.index ["page_id"], name: "index_refinery_banners_pages_on_page_id"
   end
 
   create_table "refinery_image_translations", force: :cascade do |t|

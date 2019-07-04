@@ -1,0 +1,34 @@
+ru:
+  refinery:
+    plugins:
+      banners:
+        title: Banners
+    banners:
+      admin:
+        banners:
+          actions:
+            create_new: Добавить Banner
+            reorder: Изменить порядок Banners
+            reorder_done: Закончить изменять порядок Banners
+          records:
+            title: Banners
+            sorry_no_results: "Извините, поиск не дал результатов."
+            no_items_yet: Записей "Banners" не найдено. Нажмите "Добавить Banner" чтобы создать banner.
+          banner:
+            view_live_html: Просмотреть banner вживую <br/><em>(в новом окне)</em>
+            edit: Редактировать banner
+            delete: Удалить banner навсегда
+      banners:
+        show:
+          other: Другие Banners
+  activerecord:
+    attributes:
+      'refinery/banners/banner':
+        name: Name
+        title: Title
+        description: Description
+        image: Image
+        url: Url
+        is_active: Is Active
+        start_date: Start Date
+        expiry_date: Expiry Date

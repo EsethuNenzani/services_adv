@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Banners::Admin::BannersController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.banners_admin_banners_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_banners_admin_banner_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Banners::Admin::BannersController.sortable? && ::Refinery::Banners::Banner.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.banners_admin_banners_path,
+                     t('.reorder', what:  "Banners"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.banners_admin_banners_path,
+                      t('.reorder_done', what: "Banners"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

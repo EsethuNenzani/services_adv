@@ -1,0 +1,34 @@
+nl:
+  refinery:
+    plugins:
+      banners:
+        title: Banners
+    banners:
+      admin:
+        banners:
+          actions:
+            create_new: Nieuwe Banner toevoegen
+            reorder: De volgorde van de Banners wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Banner-volgorde
+          records:
+            title: Banners
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Banners. Druk op 'Nieuwe Banner toevoegen' om de eerste toe te voegen.
+          banner:
+            view_live_html: Deze banner op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze banner
+            delete: Deze banner definitief verwijderen
+      banners:
+        show:
+          other: Andere Banners
+  activerecord:
+    attributes:
+      'refinery/banners/banner':
+        name: Name
+        title: Title
+        description: Description
+        image: Image
+        url: Url
+        is_active: Is Active
+        start_date: Start Date
+        expiry_date: Expiry Date

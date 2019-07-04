@@ -1,3 +1,10 @@
+PATH
+  remote: vendor/extensions
+  specs:
+    refinerycms-banners (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 4.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -51,7 +58,13 @@ GEM
     babosa (1.0.2)
     bcrypt (3.1.13)
     bcrypt (3.1.13-java)
+    better_errors (2.5.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.7.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.24.0)
@@ -64,6 +77,7 @@ GEM
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -71,8 +85,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    commands (0.2.1)
+      rails (>= 3.2.0)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    debug_inspector (0.0.3)
     decorators (2.0.4)
       railties (>= 4.0.0, < 6)
     devise (4.6.2)
@@ -258,6 +275,9 @@ GEM
       globalize (>= 5.1.0.beta1, < 5.2)
       refinerycms-core (= 4.0.3)
       refinerycms-dragonfly (~> 1.0)
+    refinerycms-settings (4.0.1)
+      friendly_id (>= 5.1.0, < 5.3)
+      refinerycms-core (~> 4.0, >= 4.0.0)
     refinerycms-wymeditor (2.0.0)
       refinerycms-core (>= 4.0.0.dev, < 5.0)
     regexp_parser (1.5.1)
@@ -306,9 +326,6 @@ GEM
     thread_safe (0.3.6-java)
     tilt (2.0.9)
     truncate_html (0.9.3)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.1)
@@ -333,16 +350,19 @@ GEM
     zilch-authorisation (0.0.1)
 
 PLATFORMS
-  java-
+  java
   ruby
   x64-mingw32
   x86-mingw32
   x86-mswin32
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   byebug
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
+  commands
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg
@@ -351,12 +371,13 @@ DEPENDENCIES
   refinerycms (~> 4.0)
   refinerycms-acts-as-indexed (~> 3.0, >= 3.0.0)
   refinerycms-authentication-devise (~> 2.0)
+  refinerycms-banners!
+  refinerycms-settings
   refinerycms-wymeditor (~> 2.0, >= 2.0.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
