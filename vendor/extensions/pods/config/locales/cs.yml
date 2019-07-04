@@ -1,0 +1,33 @@
+cs:
+  refinery:
+    plugins:
+      pods:
+        title: Pods
+    pods:
+      admin:
+        pods:
+          actions:
+            create_new: Přidat Pod
+            reorder: Řadit Pods
+            reorder_done: Konec řazení Pods
+          records:
+            title: Pods
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Pods. Zvolte "Přidat Pod" pro přidání prvního pod.
+          pod:
+            view_live_html: Zobrazit náhled pod<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit pod
+            delete: Smazat pod
+      pods:
+        show:
+          other: Další Pods
+  activerecord:
+    attributes:
+      'refinery/pods/pod':
+        name: Name
+        body: Body
+        url: Url
+        image: Image
+        pod_type: Pod Type
+        gallery_id: Gallery
+        video_url: Video Url

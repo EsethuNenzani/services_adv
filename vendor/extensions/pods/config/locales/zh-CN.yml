@@ -1,0 +1,35 @@
+zh-CN:
+  refinery:
+    plugins:
+      pods:
+        title: Pods
+    pods:
+      admin:
+        pods:
+          actions:
+            create_new: 建立新的 Pod
+            reorder: 对 Pods 重新排序
+            reorder_done: 对 Pods 的重新排序结束
+          records:
+            title: Pods
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Pods yet. Click "Add New Pod" to add your first pod.
+            no_items_yet: 目前没有 Pods . 点击 "Add New Pod" 创建一个pod.
+          pod:
+            view_live_html: 查看 pod 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 pod
+            delete: 永久删除 pod
+      pods:
+        show:
+          other: 其他 Pods
+  activerecord:
+    attributes:
+      'refinery/pods/pod':
+        name: Name
+        body: Body
+        url: Url
+        image: Image
+        pod_type: Pod Type
+        gallery_id: Gallery
+        video_url: Video Url

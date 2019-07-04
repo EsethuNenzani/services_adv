@@ -1,0 +1,33 @@
+nl:
+  refinery:
+    plugins:
+      pods:
+        title: Pods
+    pods:
+      admin:
+        pods:
+          actions:
+            create_new: Nieuwe Pod toevoegen
+            reorder: De volgorde van de Pods wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Pod-volgorde
+          records:
+            title: Pods
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Pods. Druk op 'Nieuwe Pod toevoegen' om de eerste toe te voegen.
+          pod:
+            view_live_html: Deze pod op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze pod
+            delete: Deze pod definitief verwijderen
+      pods:
+        show:
+          other: Andere Pods
+  activerecord:
+    attributes:
+      'refinery/pods/pod':
+        name: Name
+        body: Body
+        url: Url
+        image: Image
+        pod_type: Pod Type
+        gallery_id: Gallery
+        video_url: Video Url

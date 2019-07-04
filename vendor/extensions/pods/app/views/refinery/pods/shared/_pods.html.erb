@@ -1,0 +1,5 @@
+<% if @page.present? and @page.pods.present? %>
+  <% @page.pods.where(:pod_type => set_pod_types(local_assigns)).limit(set_pod_limit(local_assigns)).order(:position).each do |pod| %>
+    <%= render :partial => "refinery/pods/shared/#{pod.system_name}_pod", :locals => {:pod => pod} %>
+  <% end %>
+<% end %>

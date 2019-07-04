@@ -1,0 +1,33 @@
+tr:
+  refinery:
+    plugins:
+      pods:
+        title: Pods
+    pods:
+      admin:
+        pods:
+          actions:
+            create_new: Yeni Ekle Pod
+            reorder: Tekrar sirala Pods
+            reorder_done: Tekrar siralama tamamlandiPods
+          records:
+            title: Pods
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Pods yok henuz.  Tikla "Yeni Ekle Pod" eklemek senin ilk pod.
+          pod:
+            view_live_html: Bunu canlu pod goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle pod
+            delete: Bunu Sil pod sonsuza dek
+      pods:
+        show:
+          other: Diger Pods
+  activerecord:
+    attributes:
+      'refinery/pods/pod':
+        name: Name
+        body: Body
+        url: Url
+        image: Image
+        pod_type: Pod Type
+        gallery_id: Gallery
+        video_url: Video Url

@@ -13,6 +13,8 @@
       </header>
       <main id="page" role="main">
         <%= yield %>
+
+        <%= render '/refinery/pods/shared/pods', :pod_types => ['video','content','gallery','banner','inquiry'], :limit => 5 -%>
       </main>
       <footer role="contentinfo">
         <%= render "/refinery/footer" -%>

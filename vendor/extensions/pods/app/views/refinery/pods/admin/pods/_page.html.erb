@@ -1,0 +1,19 @@
+<li class='clearfix record icons' id="<%= dom_id(page) -%>" >
+
+    <% if page.children.present? %>
+        <span class="icon toggle expanded" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
+    <% else %>
+        <span class="icon"></span>
+    <% end %>
+
+    <%= check_box_tag "pod[page_ids][]", page.id, @pod.pages.include?(page) %>
+
+    <span class='title <%= 'toggle' if page.children.present? %>'>
+      <%= page.title %>
+    </span>
+
+
+  <ul class='nested' >
+    <%= render(:partial => 'refinery/pods/admin/pods/page', :collection => page.children) %>
+  </ul>
+</li>

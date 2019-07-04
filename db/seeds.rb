@@ -11,3 +11,9 @@ Refinery::Pages::Engine.load_seed
 
 # Added by Refinery CMS Banners extension
 Refinery::Banners::Engine.load_seed
+
+# Added by Refinery CMS Inquiries engine
+Refinery::Inquiries::Engine.load_seed
+
+# Added by Refinery CMS Pods extension
+Refinery::Pods::Engine.load_seed

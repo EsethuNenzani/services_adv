@@ -1,0 +1,9 @@
+<% if pod.video_url.present? %>
+  <div class="side_pod video_pod">
+    <div class="video" targeturl="<%= pod.video.youtube_url %>">
+      <%= link_to('', pod.video.youtube_url, :class => "ytlink") %>
+      <%= raw(pod.video.body) %>
+      <p><%= pod.video.name %></p>
+    </div>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190703123653) do
+ActiveRecord::Schema.define(version: 20190704081735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20190703123653) do
     t.datetime "updated_at"
   end
 
+  create_table "refinery_inquiries_inquiries", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.text "message"
+    t.boolean "spam", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["id"], name: "index_refinery_inquiries_inquiries_on_id"
+  end
+
   create_table "refinery_page_part_translations", force: :cascade do |t|
     t.integer "refinery_page_part_id", null: false
     t.string "locale", null: false
@@ -155,6 +166,26 @@ ActiveRecord::Schema.define(version: 20190703123653) do
     t.index ["rgt"], name: "index_refinery_pages_on_rgt"
   end
 
+  create_table "refinery_pages_pods", id: false, force: :cascade do |t|
+    t.integer "page_id"
+    t.integer "pod_id"
+    t.index ["page_id"], name: "index_refinery_pages_pods_on_page_id"
+    t.index ["pod_id"], name: "index_refinery_pages_pods_on_pod_id"
+  end
+
+  create_table "refinery_pods", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.string "url"
+    t.integer "image_id"
+    t.string "pod_type"
+    t.integer "gallery_id"
+    t.string "video_url"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "refinery_resource_translations", force: :cascade do |t|
     t.integer "refinery_resource_id", null: false
     t.string "locale", null: false
@@ -173,6 +204,20 @@ ActiveRecord::Schema.define(version: 20190703123653) do
     t.string "file_ext"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "refinery_settings", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.text "value"
+    t.boolean "destroyable", default: true
+    t.string "scoping"
+    t.boolean "restricted", default: false
+    t.string "form_value_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "slug"
+    t.string "title"
+    t.index ["name"], name: "index_refinery_settings_on_name"
   end
 
   create_table "seo_meta", id: :serial, force: :cascade do |t|
