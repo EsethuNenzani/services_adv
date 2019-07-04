@@ -1,0 +1,29 @@
+ru:
+  refinery:
+    plugins:
+      galleries:
+        title: Galleries
+    galleries:
+      admin:
+        galleries:
+          actions:
+            create_new: Добавить Gallery
+            reorder: Изменить порядок Galleries
+            reorder_done: Закончить изменять порядок Galleries
+          records:
+            title: Galleries
+            sorry_no_results: "Извините, поиск не дал результатов."
+            no_items_yet: Записей "Galleries" не найдено. Нажмите "Добавить Gallery" чтобы создать gallery.
+          gallery:
+            view_live_html: Просмотреть gallery вживую <br/><em>(в новом окне)</em>
+            edit: Редактировать gallery
+            delete: Удалить gallery навсегда
+      galleries:
+        show:
+          other: Другие Galleries
+  activerecord:
+    attributes:
+      'refinery/galleries/gallery':
+        name: Name
+        slug: Slug
+        is_active: Is Active

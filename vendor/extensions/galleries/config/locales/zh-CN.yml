@@ -1,0 +1,31 @@
+zh-CN:
+  refinery:
+    plugins:
+      galleries:
+        title: Galleries
+    galleries:
+      admin:
+        galleries:
+          actions:
+            create_new: 建立新的 Gallery
+            reorder: 对 Galleries 重新排序
+            reorder_done: 对 Galleries 的重新排序结束
+          records:
+            title: Galleries
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Galleries yet. Click "Add New Gallery" to add your first gallery.
+            no_items_yet: 目前没有 Galleries . 点击 "Add New Gallery" 创建一个gallery.
+          gallery:
+            view_live_html: 查看 gallery 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 gallery
+            delete: 永久删除 gallery
+      galleries:
+        show:
+          other: 其他 Galleries
+  activerecord:
+    attributes:
+      'refinery/galleries/gallery':
+        name: Name
+        slug: Slug
+        is_active: Is Active

@@ -1,0 +1,29 @@
+nl:
+  refinery:
+    plugins:
+      galleries:
+        title: Galleries
+    galleries:
+      admin:
+        galleries:
+          actions:
+            create_new: Nieuwe Gallery toevoegen
+            reorder: De volgorde van de Galleries wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Gallery-volgorde
+          records:
+            title: Galleries
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Galleries. Druk op 'Nieuwe Gallery toevoegen' om de eerste toe te voegen.
+          gallery:
+            view_live_html: Deze gallery op de website bekijken <br/><em>(opent in een nieuw venster)</em>
+            edit: Bewerk deze gallery
+            delete: Deze gallery definitief verwijderen
+      galleries:
+        show:
+          other: Andere Galleries
+  activerecord:
+    attributes:
+      'refinery/galleries/gallery':
+        name: Name
+        slug: Slug
+        is_active: Is Active

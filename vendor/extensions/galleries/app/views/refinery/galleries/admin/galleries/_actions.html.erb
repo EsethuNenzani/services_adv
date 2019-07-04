@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Galleries::Admin::GalleriesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.galleries_admin_galleries_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_galleries_admin_gallery_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Galleries::Admin::GalleriesController.sortable? && ::Refinery::Galleries::Gallery.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.galleries_admin_galleries_path,
+                     t('.reorder', what:  "Galleries"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.galleries_admin_galleries_path,
+                      t('.reorder_done', what: "Galleries"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

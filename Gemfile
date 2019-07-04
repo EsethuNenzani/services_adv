@@ -77,3 +77,4 @@ gem 'refinerycms-inquiries', ['~> 4.0', '>= 4.0.0']
 
 gem 'refinerycms-banners', path: 'vendor/extensions'
 gem 'refinerycms-pods', path: 'vendor/extensions'
+gem 'refinerycms-galleries', path: 'vendor/extensions'

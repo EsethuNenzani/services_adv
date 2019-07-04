@@ -1,0 +1,29 @@
+sk:
+  refinery:
+    plugins:
+      galleries:
+        title: Galleries
+    galleries:
+      admin:
+        galleries:
+          actions:
+            create_new: Pridať Gallery
+            reorder: Preusporiadať Galleries
+            reorder_done: Koniec radenia Galleries
+          records:
+            title: Galleries
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Galleries. Kliknite na "Pridať Gallery" pre pridanie prvého gallery.
+          gallery:
+            view_live_html: Zobraziť náhľad gallery<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť gallery
+            delete: Zmazať gallery
+      galleries:
+        show:
+          other: Daľšie Galleries
+  activerecord:
+    attributes:
+      'refinery/galleries/gallery':
+        name: Name
+        slug: Slug
+        is_active: Is Active

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190704081735) do
+ActiveRecord::Schema.define(version: 20190704131248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20190704081735) do
     t.integer "banner_id"
     t.index ["banner_id"], name: "index_refinery_banners_pages_on_banner_id"
     t.index ["page_id"], name: "index_refinery_banners_pages_on_page_id"
+  end
+
+  create_table "refinery_galleries", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.boolean "is_active"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_refinery_galleries_on_slug"
   end
 
   create_table "refinery_image_translations", force: :cascade do |t|
