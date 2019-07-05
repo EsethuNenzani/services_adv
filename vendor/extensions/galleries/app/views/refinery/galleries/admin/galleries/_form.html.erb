@@ -13,6 +13,22 @@
     <%= f.check_box :is_active, :checked => @gallery[:is_active] -%>
   </div>
 
+
+
+  <!--<div class="field">-->
+    <!--<label>Images</label>-->
+    <!--<div class="row">-->
+      <!--<div id='items'>-->
+        <%#= f.fields_for(:items, nil) do |item| %>
+            <%#= render 'item_fields', f: item %>
+        <%# end %>
+        <%#= link_to_add_association "Add a Image", f,:items %>
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div style="clear:both;"></div>-->
+
   <%= render '/refinery/admin/form_actions', f: f,
              continue_editing: false,
              delete_title: t('delete', scope: 'refinery.galleries.admin.galleries.gallery'),

@@ -59,6 +59,8 @@ group :development do
 end
 
 gem 'refinerycms-settings'
+# gem 'nested_form'
+gem 'cocoon'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
