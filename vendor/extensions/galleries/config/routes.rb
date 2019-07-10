@@ -12,6 +12,9 @@ Refinery::Core::Engine.routes.draw do
         collection do
           post :update_positions
         end
+        get "remove_item/:item_id" => "galleries#remove_item", as: :remove_item
+        get "show_add_image_panel" => "galleries#show_add_image_panel", as: :show_add_image_panel
+        post "add_items" => "galleries#add_items", as: :add_items
       end
     end
   end

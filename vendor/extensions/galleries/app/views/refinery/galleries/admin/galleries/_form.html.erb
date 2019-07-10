@@ -14,6 +14,10 @@
   </div>
 
 
+  <%= link_to "Add Images To Gallery", refinery.galleries_admin_gallery_show_add_image_panel_path(@gallery.id), remote:true, data:{disable_with:'Fetch Images...'}, class:'button', style:'margin: 10px 0' %>
+
+
+  <%= render "gallery_items", gallery: @gallery, items: @gallery.items %>
 
   <!--<div class="field">-->
     <!--<label>Images</label>-->

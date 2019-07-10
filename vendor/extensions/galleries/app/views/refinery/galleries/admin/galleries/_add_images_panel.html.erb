@@ -1,0 +1,29 @@
+<%= form_tag refinery.galleries_admin_gallery_add_items_path(gallery), remote:true do %>
+  <div style="max-height: 1000px; border: solid 2px lightblue; padding:20px; overflow-y: scroll; ">
+    <ul id="image_grid" class="clearfix images_list frame_center">
+      <% @images.each_with_index do |image, i| %>
+          <li id="image_<%= image.id %>" class="image_<%= i %>">
+            <%= check_box_tag 'image_ids[]', image.id, false, id:"image_ids_#{image.id}" %>
+            <label for="image_ids_<%= image.id %>"><%= image_fu(image, '150x150#') %></label>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class='form-actions'>
+    <div class="form-actions-left">
+      <%= submit_tag "Add images to #{gallery.name}", id:'submit_button', class:'button' %>
+      <%= link_to "Cancel", "javascript:void(0)", id:'cancel_button' ,class:'close_dialog button', onclick:'closePanel();' %>
+    </div>
+
+  </div>
+
+
+<% end %>
+
+<script>
+  function closePanel(){
+    $('.add-images-panel-container').html('');
+    $('.gallery-container').show();
+  }
+</script>

@@ -16,11 +16,31 @@ module Refinery
           # 5.times { @gallery.items.build }
         end
 
+        def show_add_image_panel
+          @gallery = Refinery::Galleries::Gallery.find params[:gallery_id]
+          @images = Refinery::Image.where.not(id: @gallery.items.present? ? @gallery.items.map{|m| m.image_id} : [] )
+        end
+
+        def add_items
+
+        end
+
+        def remove_item
+          @gallery = Refinery::Galleries::Gallery.find params[:gallery_id]
+          item = Refinery::Galleries::Item.find params[:item_id]
+          @gallery.items.delete(item)
+
+          respond_to do |format|
+            format.html {}
+            format.js {}
+          end
+        end
+
         private
 
         # Only allow a trusted parameter "white list" through.
         def gallery_params
-          params.require(:gallery).permit(:name, :slug, :is_active, items_attributes: [:id, :image_id, :gallery_id, :_destroy])
+          params.require(:gallery).permit(:name, :slug, :is_active, item_ids:[])
         end
       end
     end
