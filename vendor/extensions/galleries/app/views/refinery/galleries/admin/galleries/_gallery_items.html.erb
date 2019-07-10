@@ -1,11 +1,5 @@
 <% gallery ||= @gallery %>
 
-<div class="image-container" style="columns: 3;">
-  <% items.each do |item| %>
-    <% next unless item.image.present?  %>
-    <div class="one-image item_<%= item.id %>">
-      <%= image_tag(item.image.url, width:'150px') %>
-      <%= link_to "remove", refinery.galleries_admin_gallery_remove_item_path(gallery.id, item.id), data:{confirm: 'Are you sure?'}, remote: true, class:'button', style:'position: absolute; margin: 5px;' %>
-    </div>
-  <% end if items.present?%>
+<div class="image-container" style="columns: 3; border: solid 2px lightblue; padding: 20px;">
+  <%= render "gallery_item", gallery: gallery, items: items %>
 </div>

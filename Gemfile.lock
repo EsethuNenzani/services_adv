@@ -71,6 +71,7 @@ GEM
     bindex (0.7.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootstrap_progressbar (0.2.0)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.24.0)
@@ -374,6 +375,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap_progressbar
   byebug
   capybara (>= 2.15)
   cocoon
@@ -405,4 +407,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.16.4

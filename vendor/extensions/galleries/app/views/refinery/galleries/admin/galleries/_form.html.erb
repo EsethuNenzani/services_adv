@@ -16,22 +16,9 @@
 
   <%= link_to "Add Images To Gallery", refinery.galleries_admin_gallery_show_add_image_panel_path(@gallery.id), remote:true, data:{disable_with:'Fetch Images...'}, class:'button', style:'margin: 10px 0' %>
 
+  <!--<div style="clear:both;"></div>-->
 
   <%= render "gallery_items", gallery: @gallery, items: @gallery.items %>
-
-  <!--<div class="field">-->
-    <!--<label>Images</label>-->
-    <!--<div class="row">-->
-      <!--<div id='items'>-->
-        <%#= f.fields_for(:items, nil) do |item| %>
-            <%#= render 'item_fields', f: item %>
-        <%# end %>
-        <%#= link_to_add_association "Add a Image", f,:items %>
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div style="clear:both;"></div>-->
 
   <%= render '/refinery/admin/form_actions', f: f,
              continue_editing: false,

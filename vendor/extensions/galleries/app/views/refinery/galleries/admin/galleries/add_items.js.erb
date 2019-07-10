@@ -1,0 +1,5 @@
+$('.image-container').html("<%= j render "gallery_item", gallery: @gallery, items: @gallery.items %>");
+
+$('.add-images-panel-container').hide();
+$('.add-images-panel-container .all-images').html('');
+$('.gallery-container').show();

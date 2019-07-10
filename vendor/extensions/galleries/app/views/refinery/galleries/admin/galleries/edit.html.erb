@@ -1,6 +1,42 @@
-<div class="add-images-panel-container"></div>
+<style>
+  .add-images-panel-container .file-drop-area label {
+    display: block;
+    padding: 2em 0;
+    background: #eee;
+    text-align: center;
+    cursor: pointer;
+    border: solid 1px black;
+  }
+  .add-images-panel-container .file-drop-area  input { display: none; }
+  .add-images-panel-container #slim-containers{ width: 200px}
+  .add-images-panel-container .slim-btn-group{display:none!important;}
+</style>
+<div class="add-images-panel-container" style="display:none;">
+  <div class="file-drop-area">
+    <label for="files">Drop your files here to upload</label>
+    <input name="files[]" id="files" type="file" multiple >
+  </div>
+  <div id="slim-containers" class="col-xs-3">
+    <!-- Slim image croppers are laoded here -->
+  </div>
+  <div style="text-align: center;">
+    <h3>OR</h3>
+  </div>
+  <div class="all-images"></div>
+</div>
 
 <div class="gallery-container">
   <%= render 'form' %>
 </div>
+
+<%= content_for :stylesheets do %>
+  <link rel="stylesheet" media="screen" href="/stylesheet/slim.min.css">
+<% end %>
+
+<%= content_for :javascripts do %>
+  <script src="/javascript/image_uploader.js"></script>
+  <script src="/javascript/slim.kickstart.js"></script>
+  <script src="/javascript/slim.jquery.js"></script>
+<% end %>
+
 

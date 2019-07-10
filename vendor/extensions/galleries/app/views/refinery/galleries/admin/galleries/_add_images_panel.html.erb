@@ -1,5 +1,6 @@
+
 <%= form_tag refinery.galleries_admin_gallery_add_items_path(gallery), remote:true do %>
-  <div style="max-height: 1000px; border: solid 2px lightblue; padding:20px; overflow-y: scroll; ">
+  <div style="max-height: 900px; border: solid 2px lightblue; padding:20px; overflow-y: scroll; ">
     <ul id="image_grid" class="clearfix images_list frame_center">
       <% @images.each_with_index do |image, i| %>
           <li id="image_<%= image.id %>" class="image_<%= i %>">
@@ -23,7 +24,8 @@
 
 <script>
   function closePanel(){
-    $('.add-images-panel-container').html('');
+    $('.add-images-panel-container').hide();
+    $('.add-images-panel-container .all-iamges').html('');
     $('.gallery-container').show();
   }
 </script>

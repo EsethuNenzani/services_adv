@@ -1,2 +1,3 @@
 $('.gallery-container').hide();
-$('.add-images-panel-container').html("<%= j render 'add_images_panel', images: @images, gallery: @gallery %>");
+$('.add-images-panel-container .all-images').html("<%= j render 'add_images_panel', images: @images, gallery: @gallery %>");
+$('.add-images-panel-container').show();

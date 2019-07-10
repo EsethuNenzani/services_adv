@@ -17,16 +17,19 @@ module Refinery
         end
 
         def show_add_image_panel
-          @gallery = Refinery::Galleries::Gallery.find params[:gallery_id]
+          @gallery = Gallery.friendly.find params[:gallery_id]
           @images = Refinery::Image.where.not(id: @gallery.items.present? ? @gallery.items.map{|m| m.image_id} : [] )
         end
 
         def add_items
+          @images = Refinery::Image.where(id: params[:image_ids])
+          @gallery = Gallery.friendly.find params[:gallery_id]
 
+          @gallery.images << @images
         end
 
         def remove_item
-          @gallery = Refinery::Galleries::Gallery.find params[:gallery_id]
+          @gallery = Gallery.friendly.find params[:gallery_id]
           item = Refinery::Galleries::Item.find params[:item_id]
           @gallery.items.delete(item)
 

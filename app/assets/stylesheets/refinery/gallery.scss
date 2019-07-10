@@ -1,0 +1,11 @@
+.add-images-panel-container .file-drop-area label {
+      display: block;
+      padding: 2em 0;
+      background: #eee;
+      text-align: center;
+      cursor: pointer;
+      border: solid 1px black;
+    }
+.add-images-panel-container .file-drop-area  input { display: none; }
+.add-images-panel-container #slim-containers{ width: 200px}
+.add-images-panel-container .slim-btn-group{display:none!important;}
