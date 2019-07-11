@@ -4,7 +4,7 @@ module Refinery
       class ItemsController < ::Refinery::AdminController
 
         def get_presigned_url
-          prefix= "#{DateTime.now.strftime('%Y/%m/%d/%I/%M/%S/')}#{SecureRandom.uuid}/"
+          prefix= "#{DateTime.now.strftime('%Y/%m/%d/%H/%M/%S/')}#{SecureRandom.uuid}/"
           full_path = "#{prefix}#{params[:name]}"
           presigned_url = Aws::S3Provider.signed_request(prefix, params[:name], params[:file_type])
 
