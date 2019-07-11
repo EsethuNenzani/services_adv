@@ -98,22 +98,17 @@ $(document).ready(function(){
             // insert this element inside slim-containers div
             document.getElementById('slim-containers').appendChild(cropperContainerDiv);
 
-            //create progress
+            //create progress bar
             var progress = document.createElement('div');
             progress.className = 'progress';
             progress.setAttribute('style','height:10px');
 
-            //create progress bar
-            var progressBar = document.createElement('div');
-            progressBar.className = 'progress-bar';
-
-            progress.appendChild(progressBar);
             cropperContainerDiv.appendChild(progress);
 
             //create div for slim cropper
             var cropperDiv = document.createElement('div');
             cropperContainerDiv.appendChild(cropperDiv);
-            console.dir("hell");
+            
             var cropper = new Slim(cropperDiv,{
                 ratio: 'free',
                 edit: false,
@@ -218,17 +213,6 @@ $(document).ready(function(){
         fileInput.removeAttribute('name');
 
 
-
-        /// generate random srreing for filename for
-        function randomString(length){
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            for (var i = 0; i < length; i++) {
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-            }
-            return text;
-        }
-
         function fetchPresignImageUrl(name, file_type, gallery_id) {
             return {
                 url: "/refinery/" + gallery_id + "/get_presigned_url",
@@ -261,31 +245,6 @@ $(document).ready(function(){
             });
             return bb;
         }
-
-        function uploadProgressIndicator(progress_bar) {
-
-            var xhr = new window.XMLHttpRequest();
-            //Upload progress
-            xhr.upload.addEventListener("progress", function(evt){
-                if (evt.lengthComputable) {
-                    var percentComplete = parseInt((evt.loaded / evt.total) * 100 );
-                    //Do something with upload progress
-                    progress_bar.setAttribute('aria-valuenow', "'" + percentComplete + "'" );
-                    progress_bar.setAttribute('style','width: ' + percentComplete + '%;');
-                    console.log(percentComplete);
-                }
-            }, false);
-            // //Download progress
-            // xhr.addEventListener("progress", function(evt){
-            //     if (evt.lengthComputable) {
-            //         var percentComplete = evt.loaded / evt.total;
-            //         //Do something with download progress
-            //         console.log(percentComplete);
-            //     }
-            // }, false);
-            return xhr;
-        }
-    
 
 
 });
