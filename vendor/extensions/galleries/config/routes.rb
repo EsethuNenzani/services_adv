@@ -16,6 +16,10 @@ Refinery::Core::Engine.routes.draw do
         get "show_add_image_panel" => "galleries#show_add_image_panel", as: :show_add_image_panel
         post "add_items" => "galleries#add_items", as: :add_items
       end
+
+      get ':gallery_id/get_presigned_url' => 'items#get_presigned_url'
+      post ':gallery_id/add_item_to_gallery' => 'items#add_item_to_gallery'
+
     end
   end
 

@@ -48,14 +48,10 @@ Refinery::Images.configure do |config|
   # Configure S3 (you can also use ENV for this)
   # The s3_datastore setting by default defers to the Refinery::Dragonfly setting for this but can be set just for images.
   config.s3_datastore = Refinery::Dragonfly.s3_datastore
-  config.s3_bucket_name = ENV['S3_BUCKET']
-  config.s3_access_key_id = ENV['S3_KEY']
-  config.s3_secret_access_key = ENV['S3_SECRET']
-  # config.s3_datastore = Refinery::Dragonfly.s3_datastore
-  # config.s3_bucket_name = ENV['S3_BUCKET']
-  # config.s3_access_key_id = ENV['S3_KEY']
-  # config.s3_secret_access_key = ENV['S3_SECRET']
-  # config.s3_region = ENV['S3_REGION']
+  config.s3_bucket_name = Refinery::Dragonfly.s3_bucket_name
+  config.s3_access_key_id = Refinery::Dragonfly.s3_access_key_id
+  config.s3_secret_access_key = Refinery::Dragonfly.s3_secret_access_key
+  config.s3_region = Refinery::Dragonfly.s3_region
   #
   #  further S3 configuration options
   # config.s3_fog_storage_options = nil

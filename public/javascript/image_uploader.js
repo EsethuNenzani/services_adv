@@ -117,8 +117,7 @@ $(document).ready(function(){
 
             var cropper = new Slim(cropperDiv,{
                 ratio: 'free',
-                jpgCompression: 50,
-                size: '1500,1500',
+                size: '1920,1080',
                 edit: false,
                 defaultInputName: fileInputName,
                 statusUploadSuccess: true,

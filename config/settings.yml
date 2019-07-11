@@ -1,0 +1,5 @@
+s3:
+  bucket: <%= ENV['S3_BUCKET'] || 'perfectcircle-development'   %>
+  key: <%= ENV['S3_KEY'] || 'AKIA2ZA3BCBIASFLEEVE'   %>
+  secret: <%= ENV['S3_SECRET'] || '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'   %>
+  region: <%= ENV['S3_REGION'] || 'us-east-1'  %>

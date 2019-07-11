@@ -62,6 +62,15 @@ gem 'refinerycms-settings'
 # gem 'nested_form'
 gem 'cocoon'
 
+##amazon web services - S3 only
+gem 'aws-sdk-s3', '~> 1'
+
+#simple YAML config files
+gem 'config'
+
+# Refinery's image and resource support on S3
+gem 'dragonfly-s3_data_store'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
