@@ -1,3 +1,4 @@
+#### default S3 credentials are for 'perfectcircle-development' bucket. Set for localhost:3000 only
 s3:
   bucket: <%= ENV['S3_BUCKET'] || 'perfectcircle-development'   %>
   key: <%= ENV['S3_KEY'] || 'AKIA2ZA3BCBIASFLEEVE'   %>
