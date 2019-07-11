@@ -1,5 +1,5 @@
 <% gallery ||= @gallery %>
 
-<div class="image-container" style="columns: 3; border: solid 2px lightblue; padding: 20px;">
+<div class="image-container" style="display: flex; flex-wrap: wrap; border: solid 2px lightblue; padding: 20px; ">
   <%= render "gallery_item", gallery: gallery, items: items %>
 </div>

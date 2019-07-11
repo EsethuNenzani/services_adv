@@ -18,7 +18,7 @@ Refinery::Core::Engine.routes.draw do
       end
 
       get ':gallery_id/get_presigned_url' => 'items#get_presigned_url'
-      post ':gallery_id/add_item_to_gallery' => 'items#add_item_to_gallery'
+      get ':gallery_id/add_item_to_gallery' => 'items#add_item_to_gallery'
 
     end
   end

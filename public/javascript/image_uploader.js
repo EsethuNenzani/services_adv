@@ -102,11 +102,6 @@ $(document).ready(function(){
             //create progress bar
             var progressBar = document.createElement('div');
             progressBar.className = 'progress-bar';
-            progressBar.setAttribute('role','progressbar');
-            progressBar.setAttribute('aria-valuenow','0');
-            progressBar.setAttribute('aria-valuemin','0');
-            progressBar.setAttribute('aria-valuemax','100');
-            progressBar.setAttribute('style','width: 0%;');
 
             progress.appendChild(progressBar);
             cropperContainerDiv.appendChild(progress);
@@ -114,10 +109,9 @@ $(document).ready(function(){
             //create div for slim cropper
             var cropperDiv = document.createElement('div');
             cropperContainerDiv.appendChild(cropperDiv);
-
+            console.dir("hell");
             var cropper = new Slim(cropperDiv,{
                 ratio: 'free',
-                size: '1920,1080',
                 edit: false,
                 defaultInputName: fileInputName,
                 statusUploadSuccess: true,
@@ -128,8 +122,8 @@ $(document).ready(function(){
                     cropper.destroy();
                 }
             });
-            
-            
+
+
             cropper.load(file, function(error, data){
 
                 if (error != null){
@@ -139,56 +133,67 @@ $(document).ready(function(){
                     console.log(error);
                 }else{
 
-                    // var new_name = data.input.name.split('.')[0] + '_' +  new Date().getTime() + '.' + data.input.name.split('.')[1];
-                    // var photo_bucket_prefix = $('.job-bag-images').data('photo-bucket-prefix');
-                    // var job_bag_id = $('.job-bag-images').data('job-bag-id');
-                    // $.ajax(fetchPresignImageUrl(photo_bucket_prefix, new_name, data.input.type, job_bag_id)).done(function(result){
-                    //     var presigned_url = result.presigned_url;
-                    //
-                    //     var imgBlob = dataURItoBlob(JSON.parse(cropperDiv.childNodes[1].value).output.image);
-                    //
-                    //     $.ajax({
-                    //         xhr: function() {
-                    //             var xhr = new window.XMLHttpRequest();
-                    //             //Upload progress
-                    //             xhr.upload.addEventListener("progress", function(evt){
-                    //                 if (evt.lengthComputable) {
-                    //                     var percentComplete = parseInt((evt.loaded / evt.total) * 100 );
-                    //                     //Do something with upload progress
-                    //                     progressBar.setAttribute('aria-valuenow', "'" + percentComplete + "'" );
-                    //                     progressBar.setAttribute('style','width: ' + percentComplete + '%;');
-                    //                 }
-                    //             }, false);
-                    //             return xhr;
-                    //         },
-                    //         type: 'PUT',
-                    //         url: presigned_url,
-                    //         // Content type must much with the parameter you signed your URL with
-                    //         contentType: data.input.type,
-                    //         // this flag is important, if not set, it will try to send data as a form
-                    //         processData: false,
-                    //         // the actual file is sent raw
-                    //         data: imgBlob
-                    //     })
-                    //         .success(function() {
-                    //             console.log('File uploaded');
-                    //             cropperContainerDiv.parentNode.removeChild(cropperContainerDiv);
-                    //             // destroy the slim cropper
-                    //             cropper.destroy();
-                    //
-                    //             $.ajax({
-                    //                 url: "/admin/" + job_bag_id + "/add_image_tile",
-                    //                 dataType: 'script',
-                    //                 data: {url: 'https://trophy-flow-production.s3.amazonaws.com/' + photo_bucket_prefix + '/' + new_name }
-                    //             });
-                    //
-                    //         })
-                    //         .error(function() {
-                    //             console.log('File NOT uploaded');
-                    //             console.log( arguments);
-                    //         });
-                    //
-                    // });
+                    var new_name = data.input.name.split('.')[0] + '_' +  new Date().getTime() + '.' + data.input.name.split('.')[1];
+                    var gallery_id = $('.gallery-container').data('gallery-id');
+                    console.dir(data);
+                    $.ajax(fetchPresignImageUrl(new_name, data.input.type, gallery_id)).done(function(result){
+                        var presigned_url = result.presigned_url;
+                        var image_uid = result.image_uid;
+                        var image_name = result.image_name;
+                        var image_mime_type = result.image_mime_type;
+                        var image_size = data.input.size;
+                        var image_height = data.input.height;
+                        var image_width = data.input.width;
+
+                        var imgBlob = dataURItoBlob(JSON.parse(cropperDiv.childNodes[1].value).output.image);
+                    
+                        $.ajax({
+                            xhr: function() {
+                                var xhr = new window.XMLHttpRequest();
+                                //Upload progress
+                                xhr.upload.addEventListener("progress", function(evt){
+                                    if (evt.lengthComputable) {
+                                        var percentComplete = parseInt((evt.loaded / evt.total) * 100 );
+                                        //Do something with upload progress
+                                        progress.setAttribute('style','width: ' + percentComplete + '%; height: 10px; background-color: aqua ');
+                                    }
+                                }, false);
+                                return xhr;
+                            },
+                            type: 'PUT',
+                            url: presigned_url,
+                            // Content type must much with the parameter you signed your URL with
+                            contentType: data.input.type,
+                            // this flag is important, if not set, it will try to send data as a form
+                            processData: false,
+                            // the actual file is sent raw
+                            data: imgBlob
+                        })
+                            .success(function() {
+                                console.log('File uploaded');
+                                cropperContainerDiv.parentNode.removeChild(cropperContainerDiv);
+                                // // destroy the slim cropper
+                                cropper.destroy();
+                    
+                                $.ajax({
+                                    url: "/refinery/" + gallery_id + "/add_item_to_gallery",
+                                    dataType: 'script',
+                                    data: {image_uid: image_uid,
+                                           image_name: image_name,
+                                           image_mime_type: image_mime_type,
+                                           image_size: image_size,
+                                           image_height: image_height,
+                                           image_width: image_width
+                                    }
+                                });
+                    
+                            })
+                            .error(function() {
+                                console.log('File NOT uploaded');
+                                console.log( arguments);
+                            });
+                    
+                    });
                 }
 
             });
@@ -217,12 +222,11 @@ $(document).ready(function(){
             return text;
         }
 
-        function fetchPresignImageUrl(photo_bucket_prefix, name, file_type, job_bag_id) {
+        function fetchPresignImageUrl(name, file_type, gallery_id) {
             return {
-                url: "/admin/" + job_bag_id + "/get_presigned_url",
+                url: "/refinery/" + gallery_id + "/get_presigned_url",
                 dataType: "json",
                 data: {
-                    prefix: photo_bucket_prefix,
                     name: name,
                     file_type: file_type
                 }
