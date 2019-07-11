@@ -7,5 +7,6 @@
     border: solid 1px black;
 }
 .add-images-panel-container .file-drop-area  input { display: none; }
-.add-images-panel-container #slim-containers{ width: 200px; display:flex;}
+.add-images-panel-container #slim-containers{display:flex; flex-wrap: wrap;}
+.add-images-panel-container #slim-containers .one-image{width: 200px;}
 .add-images-panel-container .slim-btn-group{display:none!important;}

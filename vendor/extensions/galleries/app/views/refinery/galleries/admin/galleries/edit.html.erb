@@ -1,17 +1,5 @@
 
-<div class="add-images-panel-container" style="display:none;">
-  <div class="file-drop-area">
-    <label for="files">Drop your files here to upload</label>
-    <input name="files[]" id="files" type="file" multiple >
-  </div>
-  <div id="slim-containers">
-    <!-- Slim image croppers are laoded here -->
-  </div>
-  <div style="text-align: center;">
-    <h3>OR</h3>
-  </div>
-  <div class="all-images"></div>
-</div>
+<%= render 'add_to_gallery' %>
 
 <div class="gallery-container" data-gallery-id="<%= @gallery.slug %>">
   <%= render 'form' %>

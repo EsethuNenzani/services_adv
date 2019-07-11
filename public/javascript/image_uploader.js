@@ -87,6 +87,10 @@ $(document).ready(function(){
         // create an Image Cropper for each passed file
         function createCropper(file) {
 
+            if ($('#slim-containers .one-image').length == 0){
+                $('#slim-containers').html("");
+            }
+
             // create container element for cropper
             var cropperContainerDiv = document.createElement('div');
             cropperContainerDiv.className = 'one-image';
@@ -171,6 +175,9 @@ $(document).ready(function(){
                         })
                             .success(function() {
                                 console.log('File uploaded');
+                                if ($('#slim-containers .one-image').length == 1){
+                                    $('#slim-containers').append("<strong>All images have been uploaded.</strong>");
+                                }
                                 cropperContainerDiv.parentNode.removeChild(cropperContainerDiv);
                                 // // destroy the slim cropper
                                 cropper.destroy();
