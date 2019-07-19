@@ -1,6 +1,7 @@
 <% @inquiry ||= ::Refinery::Inquiries::Inquiry.new %>
 
 <div class="side_pod inquiry_pod">
+  <h2>Inquiry</h2>
   <%= form_for [refinery, :inquiries, @inquiry] do |f| %>
       <%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
@@ -8,30 +9,26 @@
                      :include_object_name => true
                  } %>
 
-      <div class="field">
+      <div class="field-group">
         <%= f.label :name, :class => 'placeholder-fallback required' %>
-        <%= f.text_field :name, :class => 'text', :required => 'required',
-                         :placeholder => (t('name', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+        <%= f.text_field :name, :class => 'text form-control', :required => 'required' %>
       </div>
 
-      <div class="field">
+      <div class="field-group">
         <%= f.label :email, :class => 'placeholder-fallback required' %>
-        <%= f.email_field :email, :class => 'text email', :required => 'required',
-                          :placeholder => (t('email', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+        <%= f.email_field :email, :class => 'text email form-control', :required => 'required' %>
       </div>
 
       <% if Refinery::Inquiries.show_phone_number_field %>
-          <div class="field">
+          <div class="field-group">
             <%= f.label :phone, :class => 'placeholder-fallback' %>
-            <%= f.text_field :phone, :class => 'text phone',
-                             :placeholder => (t('phone', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+            <%= f.text_field :phone, :class => 'text phone form-control' %>
           </div>
       <% end %>
 
-      <div class='field message_field'>
+      <div class='field-group message_field'>
         <%= f.label :message, :class => 'placeholder-fallback required' %>
-        <%= f.text_area :message, :rows => 8, :required => 'required',
-                        :placeholder => (t('message', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+        <%= f.text_area :message, :rows => 8, :required => 'required', :class => 'form-control' %>
       </div>
 
       <% if Refinery::Inquiries.recaptcha_site_key.present? %>
@@ -44,7 +41,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit 'Submit', :class=> "btn btn-custom" %>
       </div>
   <% end %>
 </div>

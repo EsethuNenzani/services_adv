@@ -60,7 +60,6 @@ end
 
 gem 'refinerycms-settings'
 # gem 'nested_form'
-gem 'cocoon'
 
 ##amazon web services - S3 only
 gem 'aws-sdk-s3', '~> 1'

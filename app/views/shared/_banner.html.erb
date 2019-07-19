@@ -1,0 +1,23 @@
+<% if @page.present? and @page.banners.present? and @page.banners.active.present? %>
+  <% if @page.banners.active.count == 1 %>
+      <% sliver = @page.banners.active.first %>
+      <div class="sliver">
+        <%= image_fu sliver.image, "1920x350#c", :class=>"img-responsive" %>
+      </div>
+  <% else %>
+    <!-- masterslider -->
+    <div class="master-slider ms-skin-default" id="masterslider">
+      <% @page.banners.active.each do |banner| %>
+        <div class="ms-slide slide-1" data-delay="5">
+          <%= image_fu(banner.image, "1920x380#c") %>
+        </div>
+      <% end %>
+    </div>
+    <!-- end of masterslider -->
+  <% end %>
+<% else %>
+  <div class="sliver">
+    <%#= image_tag('banner_1.jpg', size: "1920x350", :class=>"img-responsive") %>
+  </div>
+<% end %>
+  

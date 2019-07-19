@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">...</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% Refinery::Page.in_menu.where(:depth => 0).all.each do |page| %>
+            <% if page.children.present? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= page.title %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <% page.children.in_menu.each do |child| %>
+                    <%= link_to child.title, refinery.url_for(child.url), :class=> "dropdown-item" %>
+                  <% end %>
+                  <!--<div class="dropdown-divider"></div>-->
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to page.title, refinery.url_for(page.url), :class=> "nav-link" %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

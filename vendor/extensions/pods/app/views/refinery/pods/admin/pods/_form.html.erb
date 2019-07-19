@@ -37,12 +37,12 @@
   </div>
 
   <div class='field'>
-    <%= f.label :gallery_id -%>
-    <%= f.number_field :gallery_id -%>
+    <%= f.label :gallery_id, 'Gallery' -%>
+    <%= f.collection_select :gallery_id, ::Refinery::Galleries::Gallery.order(:name), :id , :name, {:prompt => "-- Please select when relevant --"}, {} -%>
   </div>
 
   <div class='field'>
-    <%= f.label :video_url -%>
+    <%= f.label 'Youtube url' -%>
     <%= f.text_field :video_url -%>
   </div>
 

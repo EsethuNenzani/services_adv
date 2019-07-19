@@ -8,6 +8,7 @@ module Refinery
       validates_presence_of :name
 
       belongs_to :image, :class_name => '::Refinery::Image', optional: true
+      belongs_to :gallery, :class_name => '::Refinery::Galleries::Gallery', optional: true
 
       has_and_belongs_to_many :pages, :class_name => '::Refinery::Page', :join_table => 'refinery_pages_pods'
 

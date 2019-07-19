@@ -1,9 +1,11 @@
 <% if pod.image.present? %>
-  <div class="side_pod banner_pod">
+  <div class="side_pod banner_pod single_image">
       <% if pod.url.present? %>
-          <%= link_to(image_tag(pod.image.image.thumb('280x200#c').url), pod.url) %>
+          <%= link_to(image_tag(pod.image.image.thumb('x200').url, :class=> 'img-fluid'), pod.url) %>
       <% else %>
-          <%= image_tag(pod.image.image.thumb('280x200#c').url) %>
+        <a href="<%= pod.image.url %>" class="item">
+          <%= image_tag(pod.image.image.thumb('x200').url, :class=> 'img-fluid') %>
+        </a>
       <% end %>
 	  <div class="clear"></div>
   </div>

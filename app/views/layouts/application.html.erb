@@ -7,18 +7,22 @@
   </head>
   <body id="<%= canonical_id @page %>" class="<%= view_template_class @page %>">
     <%= site_bar -%>
-    <div id="page_container">
-      <header id="header" role="banner">
-        <%= render "/refinery/header" -%>
-      </header>
-      <main id="page" role="main">
-        <%= yield %>
 
-        <%= render '/refinery/pods/shared/pods', :pod_types => ['video','content','gallery','banner','inquiry'], :limit => 5 -%>
-      </main>
-      <footer role="contentinfo">
-        <%= render "/refinery/footer" -%>
-      </footer>
+    <%= render "/refinery/header" -%>
+
+    <%= render '/shared/banner' -%>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <%= yield %>
+        </div>
+      </div>
     </div>
+
+    <%= render '/refinery/pods/shared/pods', :pod_types => ['video','content','gallery','banner','inquiry'], :limit => 5 -%>
+
+    <%= render "/refinery/footer" -%>
+
   </body>
 </html>

@@ -11,9 +11,6 @@ module Refinery
       has_many :items, class_name: '::Refinery::Galleries::Item', foreign_key: 'gallery_id', dependent: :destroy
       has_many :images, through: :items, class_name: '::Refinery::Image'
 
-      # To enable admin searching, add acts_as_indexed on searchable fields, for example:
-      #
-      #   acts_as_indexed :fields => [:title]
 
       scope :active, -> {where(:is_active => true)}
 

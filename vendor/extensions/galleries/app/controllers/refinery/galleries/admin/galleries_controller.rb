@@ -6,16 +6,6 @@ module Refinery
         crudify :'refinery/galleries/gallery',
                 :title_attribute => 'name'
 
-        def new
-          @gallery = Gallery.new
-          # 1.times { @gallery.items.build }
-        end
-
-        def edit
-          @gallery = Gallery.friendly.find(params[:id])
-          # 5.times { @gallery.items.build }
-        end
-
         def show_add_image_panel
           @gallery = Gallery.friendly.find params[:gallery_id]
           @images = Refinery::Image.where.not(id: @gallery.items.present? ? @gallery.items.map{|m| m.image_id} : [] )

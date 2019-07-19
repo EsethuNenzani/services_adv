@@ -8,17 +8,16 @@
     <%= f.text_field :name, :class => 'larger widest' -%>
   </div>
 
-  <div class='field'>
-    <%= f.label :is_active -%>
-    <%= f.check_box :is_active, :checked => @gallery[:is_active] -%>
-  </div>
+  <!--<div class='field'>-->
+    <!--<%#= f.label :is_active -%>-->
+    <!--<%#= f.check_box :is_active, :checked => @gallery[:is_active] -%>-->
+  <!--</div>-->
 
 
-  <%= link_to "Add Images To Gallery", refinery.galleries_admin_gallery_show_add_image_panel_path(@gallery.id), remote:true, data:{disable_with:'Fetch Images...'}, class:'button', style:'margin: 10px 0' %>
-
-  <!--<div style="clear:both;"></div>-->
-
-  <%= render "gallery_items", gallery: @gallery, items: @gallery.items %>
+  <% if @gallery.id.present? %>
+    <%= link_to "Add Images To Gallery", refinery.galleries_admin_gallery_show_add_image_panel_path(@gallery.id), remote:true, data:{disable_with:'Fetch Images...'}, class:'button', style:'margin: 10px 0' %>
+    <%= render "gallery_items", gallery: @gallery, items: @gallery.items %>
+  <% end %>
 
   <%= render '/refinery/admin/form_actions', f: f,
              continue_editing: false,

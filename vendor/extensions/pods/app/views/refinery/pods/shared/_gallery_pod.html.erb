@@ -1,10 +1,25 @@
+<% if pod.gallery.present? and pod.gallery.items.present? %>
 <div class="side_pod gallery_pod">
-  <ul class="gallery_slider">
-    <% pod.portfolio_entry.items.each do |item| %>
-      <li>
-      	<%= link_to(image_fu(item.image, '280x180#c'), item.image.url, :class => "cboxElement") %>
-      </li>
-    <% end if pod.portfolio_entry.present? and pod.portfolio_entry.items.present? %>
-  </ul>
-  <p><%= pod.name %></p>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" id="lightgallery">
+      <% pod.gallery.items.each do |item| %>
+      <div class="carousel-item <%= item == pod.gallery.items.first ? 'active' : '' %>">
+        <a href="<%= item.image.url %>" class="item">
+          <%= image_fu item.image, '350x220#c', :class=> "", :alt=>"gallery pod slider" %>
+        </a>
+      </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <!--<p><%#= pod.name %></p>-->
 </div>
+<% end %>
