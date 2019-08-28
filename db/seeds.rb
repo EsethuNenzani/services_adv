@@ -20,3 +20,6 @@ Refinery::Pods::Engine.load_seed
 
 # Added by Refinery CMS Galleries extension
 Refinery::Galleries::Engine.load_seed
+
+# Added by Refinery CMS Blog engine
+Refinery::Blog::Engine.load_seed
