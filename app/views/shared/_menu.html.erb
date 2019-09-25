@@ -11,18 +11,18 @@
             <% if page.children.present? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= page.title %>
+                  <%= page.menu_title.present? ? page.menu_title : page.title %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <% page.children.in_menu.each do |child| %>
-                    <%= link_to child.title, refinery.url_for(child.url), :class=> "dropdown-item" %>
+                    <%= link_to child.menu_title.present? ? child.menu_title : child.title, refinery.url_for(child.url), :class=> "dropdown-item" %>
                   <% end %>
                   <!--<div class="dropdown-divider"></div>-->
                 </div>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to page.title, refinery.url_for(page.url), :class=> "nav-link" %>
+                <%= link_to page.menu_title.present? ? page.menu_title : page.title, refinery.url_for(page.url), :class=> "nav-link" %>
               </li>
             <% end %>
           <% end %>

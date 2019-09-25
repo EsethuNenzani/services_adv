@@ -1,7 +1,7 @@
 <% items.each do |item| %>
     <% next unless item.image.present?  %>
     <div class="one-image item_<%= item.id %>" >
-      <%= image_fu(item.image, '150x150#',style:"margin:12px 10px 15px 10px; ") %>
       <%= link_to " X ", refinery.galleries_admin_gallery_remove_item_path(gallery.id, item.id), data:{confirm: 'Are you sure?'}, remote: true, class:'button', style:'position: absolute; margin: -18px 0 0 15px;' %>
+      <%= image_fu(item.image, '150x150#',style:"margin:12px 10px 15px 10px; ") %>
     </div>
 <% end if items.present?%>
