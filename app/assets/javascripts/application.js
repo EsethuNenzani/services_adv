@@ -12,7 +12,7 @@
 //
 //= require jquery.min
 //= require rails-ujs
-//= require_tree .
+//= require_directory .
 
 $(document).ready(function() {
 
