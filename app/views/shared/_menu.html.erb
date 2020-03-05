@@ -7,14 +7,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <% Refinery::Page.in_menu.where(:depth => 0).all.each do |page| %>
-            <% if page.children.present? %>
+          <% Refinery::Page.order(:lft).in_menu.where(:depth => 0).all.each do |page| %>
+            <% if page.children.present? and page.children.in_menu.present? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= page.menu_title.present? ? page.menu_title : page.title %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <% page.children.in_menu.each do |child| %>
+                  <% page.children.order(:lft).in_menu.each do |child| %>
                     <%= link_to child.menu_title.present? ? child.menu_title : child.title, refinery.url_for(child.url), :class=> "dropdown-item" %>
                   <% end %>
                   <!--<div class="dropdown-divider"></div>-->
