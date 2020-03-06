@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200306074332) do
+ActiveRecord::Schema.define(version: 20200306094312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20200306074332) do
     t.integer "access_count", default: 0
     t.string "slug"
     t.string "username"
+    t.integer "image_id"
     t.index ["access_count"], name: "index_refinery_blog_posts_on_access_count"
     t.index ["id"], name: "index_refinery_blog_posts_on_id"
     t.index ["slug"], name: "index_refinery_blog_posts_on_slug"
