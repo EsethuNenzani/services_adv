@@ -20,6 +20,9 @@ Refinery::Core::Engine.routes.draw do
       get ':gallery_id/get_presigned_url' => 'items#get_presigned_url'
       get ':gallery_id/add_item_to_gallery' => 'items#add_item_to_gallery'
 
+      get ':gallery_id/move_up' => 'items#move_up', as: :item_move_up
+      get ':gallery_id/move_down' => 'items#move_down', as: :item_move_down
+
     end
   end
 

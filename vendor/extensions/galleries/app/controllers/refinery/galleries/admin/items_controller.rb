@@ -37,6 +37,52 @@ module Refinery
           end
         end
 
+        def move_up
+          gallery = Refinery::Galleries::Gallery.find_by_id(params[:gallery_id])
+          items = Refinery::Galleries::Item.where(gallery_id: params[:gallery_id]).order(position: :asc)
+          previous_item = nil
+          items.each do |item|
+            if item.id == params[:item_id].to_i
+              if previous_item.present?
+                position_a = previous_item.position
+                position_b = item.position
+                previous_item.position = position_b
+                item.position = position_a
+                previous_item.save
+                item.save
+                break
+              end
+            else
+              previous_item = item
+            end
+          end
+
+          redirect_to refinery.edit_galleries_admin_gallery_path(gallery), notice: "Node position changed"
+        end
+
+        def move_down
+          gallery = Refinery::Galleries::Gallery.find_by_id(params[:gallery_id])
+          items = Refinery::Galleries::Item.where(gallery_id: params[:gallery_id]).reorder(position: :desc)
+          previous_item = nil
+          items.each do |item|
+            if item.id == params[:item_id].to_i
+              if previous_item.present?
+                position_a = previous_item.position
+                position_b = item.position
+                previous_item.position = position_b
+                item.position = position_a
+                previous_item.save
+                item.save
+                break
+              end
+            else
+              previous_item = item
+            end
+          end
+
+          redirect_to refinery.edit_galleries_admin_gallery_path(gallery), notice: "Node position changed"
+        end
+
       end
     end
   end
