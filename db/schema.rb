@@ -148,29 +148,6 @@ ActiveRecord::Schema.define(version: 20200306094312) do
     t.index ["slug"], name: "index_refinery_blog_posts_on_slug"
   end
 
-  create_table "refinery_categories", force: :cascade do |t|
-    t.string "name"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "refinery_categories_projects", id: false, force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_refinery_categories_projects_on_category_id"
-    t.index ["project_id"], name: "index_refinery_categories_projects_on_project_id"
-  end
-
-  create_table "refinery_clients", force: :cascade do |t|
-    t.string "name"
-    t.integer "image_id"
-    t.string "url"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "refinery_galleries", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -302,43 +279,6 @@ ActiveRecord::Schema.define(version: 20200306094312) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "refinery_projects", force: :cascade do |t|
-    t.string "title"
-    t.string "client"
-    t.string "year"
-    t.text "description"
-    t.integer "cover_image_id"
-    t.integer "image1_id"
-    t.integer "image2_id"
-    t.integer "image3_id"
-    t.integer "image4_id"
-    t.integer "image5_id"
-    t.integer "image6_id"
-    t.integer "image7_id"
-    t.integer "image8_id"
-    t.integer "image9_id"
-    t.integer "image10_id"
-    t.integer "image11_id"
-    t.integer "image12_id"
-    t.string "image1_size"
-    t.string "image2_size"
-    t.string "image3_size"
-    t.string "image4_size"
-    t.string "image5_size"
-    t.string "image6_size"
-    t.string "image7_size"
-    t.string "image8_size"
-    t.string "image9_size"
-    t.string "image10_size"
-    t.string "image11_size"
-    t.string "image12_size"
-    t.integer "video_id"
-    t.boolean "is_featured"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "refinery_resource_translations", force: :cascade do |t|
     t.integer "refinery_resource_id", null: false
     t.string "locale", null: false
@@ -371,17 +311,6 @@ ActiveRecord::Schema.define(version: 20200306094312) do
     t.string "slug"
     t.string "title"
     t.index ["name"], name: "index_refinery_settings_on_name"
-  end
-
-  create_table "refinery_teams", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
-    t.integer "image_id"
-    t.string "email_address"
-    t.text "description"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "seo_meta", id: :serial, force: :cascade do |t|
